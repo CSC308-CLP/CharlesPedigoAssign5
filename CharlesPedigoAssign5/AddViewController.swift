@@ -16,6 +16,7 @@ class AddViewController: UIViewController {
     
     @IBOutlet weak var delegateInputField: UITextField!
     
+    @IBOutlet weak var notificationCenterInputField: UITextField!
     
     
     @IBAction func cancel(_ sender: Any) {
@@ -36,6 +37,12 @@ class AddViewController: UIViewController {
             return
         }
         delegate?.addViewController(self, didInsert: textB)
+        //NotificationCenter
+        guard let textC = notificationCenterInputField.text else{
+            return
+        }
+        let center = NotificationCenter.default
+        center.post(name: .toDoDidInsert, object: nil, userInfo: [Key.todo: textC])
         
         dismiss(animated: true)
     }
@@ -48,4 +55,8 @@ class AddViewController: UIViewController {
     }
     
 
+}
+
+extension NSNotification.Name {
+    static let toDoDidInsert = NSNotification.Name("toDoDidInsert")
 }

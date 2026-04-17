@@ -135,6 +135,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="delegateInputField" destination="dRh-7I-jGV" id="hyJ-GD-u39"/>
+                        <outlet property="notificationCenterInputField" destination="ZdC-S5-czd" id="NGI-75-dnZ"/>
                         <outlet property="propertyInputField" destination="6Vg-4r-zZp" id="aRh-gS-bIy"/>
                     </connections>
                 </viewController>

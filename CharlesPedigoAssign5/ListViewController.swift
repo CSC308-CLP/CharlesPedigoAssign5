@@ -24,10 +24,20 @@ class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let center = NotificationCenter.default
+        center.addObserver(forName: .toDoDidInsert, object: nil, queue: .main) { noti in
+            if let todo = noti.userInfo?[Key.todo] as? String{
+                self.toDoList.append(todo)
+                self.toDoTableView.reloadData()
+            }
+        }
     }
 
 
+}
+
+enum Key{
+    case todo
 }
 
 extension ListViewController: ToDoDelegate {
