@@ -11,7 +11,7 @@
         <!--ListViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="ListViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="CharlesPedigoAssign5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ListViewController" id="BYZ-38-t0r" customClass="ListViewController" customModule="CharlesPedigoAssign5" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,6 +59,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="toDoTableView" destination="DT0-4t-y1b" id="SaH-Vq-vfb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,7 +70,7 @@
         <!--AddViewController-->
         <scene sceneID="Rq3-NV-fl8">
             <objects>
-                <viewController title="AddViewController" id="sZR-AR-QL2" sceneMemberID="viewController">
+                <viewController title="AddViewController" id="sZR-AR-QL2" customClass="AddViewController" customModule="CharlesPedigoAssign5" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6dD-oj-okT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,11 +130,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Addition Method" id="LvI-Kx-QSn">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="q7z-GH-nla"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="q7z-GH-nla">
+                            <connections>
+                                <action selector="cancel:" destination="sZR-AR-QL2" id="Wv9-18-KCu"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="c8k-uD-C58">
                             <color key="tintColor" systemColor="tintColor"/>
+                            <connections>
+                                <action selector="save:" destination="sZR-AR-QL2" id="KwD-df-Oxa"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="propertyInputField" destination="6Vg-4r-zZp" id="aRh-gS-bIy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPm-kC-Pl4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
