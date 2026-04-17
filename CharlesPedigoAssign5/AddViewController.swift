@@ -10,21 +10,33 @@ import UIKit
 class AddViewController: UIViewController {
     var listVC: ListViewController?
     
+    weak var delegate: ToDoDelegate? //Delegate avoids strong connections.
+    
     @IBOutlet weak var propertyInputField: UITextField!
+    
+    @IBOutlet weak var delegateInputField: UITextField!
+    
     
     
     @IBAction func cancel(_ sender: Any) {
+        delegate?.addViewControllerDidCancel(self)
         dismiss(animated: true)
     }
     
     @IBAction func save(_ sender: Any) {
         dismiss(animated: true)
-        guard let text = propertyInputField.text else {
+        //Property
+        guard let textA = propertyInputField.text else {
             return
         }
-        listVC?.toDoList.append(text) //optional chainning
+        listVC?.toDoList.append(textA) //optional chaining
         listVC?.toDoTableView.reloadData()
-        //print(listVC?.toDoList)
+        //Delegate
+        guard let textB = delegateInputField.text else{
+            return
+        }
+        delegate?.addViewController(self, didInsert: textB)
+        
         dismiss(animated: true)
     }
     

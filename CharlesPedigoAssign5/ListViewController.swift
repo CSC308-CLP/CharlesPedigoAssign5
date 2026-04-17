@@ -18,6 +18,7 @@ class ListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination.children.first as? AddViewController {
             vc.listVC = self
+            vc.delegate = self
         }
     }
 
@@ -27,6 +28,18 @@ class ListViewController: UIViewController {
     }
 
 
+}
+
+extension ListViewController: ToDoDelegate {
+    func addViewController(_ vc: UIViewController, didInsert todo: String) {
+        toDoList.append(todo)
+        toDoTableView.reloadData()
+    }
+    
+    func addViewControllerDidCancel(_ vc: UIViewController) {
+        
+    }
+    
 }
 
 extension ListViewController: UITableViewDataSource {
